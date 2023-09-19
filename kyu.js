@@ -520,4 +520,193 @@ function foldArray(array, runs,resArr=[])
 
 }
 
-// console.log(foldArray([ 1, 2, 3, 4, 5 ],2))
+// https://www.codewars.com/kata/5a58ca28e626c55ae000018a
+function areaOfPolygonInsideCircle(circleRadius, numberOfSides) {
+  r=circleRadius;
+  n=numberOfSides;
+ // console.log(Math.sin((2*Math.PI)/n))
+ console.log((r*r*n))
+ let ans= (n/2) * (r*r) * Math.sin((2*Math.PI)/n) 
+ 
+ ans=ans.toFixed(3)
+ return parseFloat(ans)
+ 
+}
+
+
+// https://www.codewars.com/kata/52c31f8e6605bcc646000082
+function twoSum(numbers, target,arr=[],newArr=[]) {
+  for(let i=0;i<numbers.length;i++){
+    for(j=0;j<numbers.length;j++){
+      if(numbers[i]+numbers[j]===target && i!==j)
+      {
+        arr.push(i)
+        arr.push(j)
+       // console.log(arr)
+        
+      }
+    }
+    
+  }
+  
+  newArr.push(arr[0])
+  newArr.push(arr[1])
+  return newArr
+ }
+
+
+//  https://www.codewars.com/kata/514b92a657cdc65150000006
+function solution(number,sum=0)
+{
+  
+if(number<0){
+return  0
+}
+else{
+  
+  for(let i=0;i<number;i++){
+    if(i%3===0 || i%5===0){
+        
+        sum=sum+i}
+     }
+return sum 
+  }
+
+  
+}
+
+// https://www.codewars.com/kata/52f787eb172a8b4ae1000a34
+sum=0
+function zeros (n) {
+  if(n>=5){
+    n=Math.floor(n/5)
+    sum=sum+n
+    zeros(n)
+  }else{
+    final=sum
+    sum=0
+    return final
+  }
+  
+  return final   
+}
+
+// https://www.codewars.com/kata/525c65e51bf619685c000059
+function cakes(recipe, available,numArr=[]) {
+  
+  recKey=Object.keys(recipe)
+  availableKey=Object.keys(available)
+if(recKey.length>availableKey.length){
+  return 0
+}else{
+  
+   for(key in recKey)
+    {
+      numArr.push(Math.floor(available[recKey[key]]/recipe[recKey[key]]))
+      
+    }
+
+   return Math.min(...numArr)
+}
+ 
+}
+
+// https://www.codewars.com/kata/51fc12de24a9d8cb0e000001
+function validISBN10(isbn) {
+ 
+  resArr=[]
+  isbnArr=isbn.split('')
+  
+  
+  if(isbnArr.length!==10){
+    return false
+  }else{
+      
+      if(isbnArr[9]=='X'){
+        isbnArr[9]=10;
+      } 
+  for(let i=0;i<10;i++){
+   resArr.push(isbnArr[i]*(i+1))   
+  }
+   sum=resArr.reduce((acc,curr)=>{
+     return acc+curr
+   })
+   if(sum%11===0){
+     return true
+   }else {
+     return false
+   }}}
+ 
+ console.log(validISBN10("1112223339"))
+
+
+ //https://www.codewars.com/kata/52597aa56021e91c93000cb0
+ function moveZeros(arr) {
+  count=0
+  zeroArr=[]
+    newArr=arr.filter((item)=>{
+    if(typeof(item)=="boolean"){
+      item=item.toString()
+    }  
+    if(item===null){
+     return "null" 
+    }
+    if(item===0){
+        zeroArr.push(0)       
+      }else{
+      return item   
+        
+      }
+    })
+  
+      
+    
+    return newArr.concat(zeroArr)
+  }
+
+  // https://www.codewars.com/kata/54a91a4883a7de5d7800009c
+  function incrementString (strng) 
+{
+number=0
+const match = /[A-Z]/gi.exec(strng.split('').reverse().join(''));
+if((match && match.index)==null)
+{
+   l=strng.length
+  strng++
+  return strng.toString().padStart(l,0)
+}
+else{
+  
+const till= strng.length-(match && match.index )
+ 
+
+chunk=strng.slice(0,till)
+number=strng.slice(till)
+
+l=number.length
+number++
+number=number.toString().padStart(l,0)
+
+
+}
+  return chunk+number
+  
+  
+}
+
+// https://www.codewars.com/kata/526dbd6c8c0eb53254000110
+
+function alphanumeric(str){
+    
+  if(str.length===0) return false 
+  
+  for(let i=0;i<str.length;i++){
+    if(str[i]=="_" || str[i]==" " || str[i]=="" || str[i]==="!" || str[i]==="\n" || str[i]===")" || str[i]==="("   ){
+      return false
+      break;
+    }
+  }
+    return true
+  
+  }
+  
